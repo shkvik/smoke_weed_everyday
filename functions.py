@@ -81,8 +81,8 @@ def draw_graphic(result_x, result_y, res_y2, res_y3):
     pd_y3 = pd.array(res_y3)
 
     # Plot Line1 (Left Y Axis)
-    fig, ax1 = plt.subplots(1,1,figsize=(16,9), dpi= 100)
-    ax1.plot(pd_x, pd_y, color='tab:red')
+    fig, ax1 = plt.subplots(0.5,0.5,figsize=(16,9), dpi= 100)
+    ax1.plot(pd_x, pd_y, color='tab:red', linewidth=3)
 
     # Plot Line2 (Right Y Axis)
     ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
@@ -114,7 +114,7 @@ def draw_graphic2(first_objects, second_objects, pack_objects = None):
 
     # Plot Line1 (Left Y Axis)
     fig, ax1 = plt.subplots(1,1,figsize=(16,9), dpi= 100)
-    ax1.plot(pd_x, pd_y, color='tab:red')
+    ax1.plot(pd_x, pd_y, color='tab:red', linewidth=0.3)
 
     collect1 = []
     collect2 = []
@@ -122,20 +122,20 @@ def draw_graphic2(first_objects, second_objects, pack_objects = None):
     for i, j in zip(range(1, len(first_objects)), range(0, len(first_objects)-1)):
        collect1.append(0)
        collect1[j] = ax1.twinx()
-       collect1[j].plot(pd_x, pd.array(first_objects[i].y), color='tab:red') 
+       collect1[j].plot(pd_x, pd.array(first_objects[i].y), color='tab:red', linewidth=0.3) 
 
 
     for i in range(0, len(second_objects)):
        collect2.append(0)
        collect2[i] = ax1.twinx()
-       collect2[i].plot(pd_x, pd.array(second_objects[i].y), color='tab:green') 
+       collect2[i].plot(pd_x, pd.array(second_objects[i].y), color='tab:green', linewidth=0.3) 
 
 
     if(pack_objects != None):
         for j in range(0, len(pack_objects)):
             collect = []
             for i in range(0, len(pack_objects)):
-                collect.append(0)
+                collect.append(i)
                 collect[i] = ax1.twinx()
                 collect[i].plot(pd_x, pd.array(pack_objects[j].object[i].y), color=pack_objects[j].color) 
 
